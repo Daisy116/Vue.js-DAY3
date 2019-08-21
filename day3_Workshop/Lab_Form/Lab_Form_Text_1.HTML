@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+    <form class="form-horizontal" id="lab">
+        <fieldset>
+        
+        <!-- Form Name -->
+        <legend>Form Name</legend>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="title">Text:</label>  
+          <div class="col-md-4">
+          <input id="title" v-model.lazy="title" name="title" type="text" placeholder="" class="form-control input-md">
+          <!-- 用v-model.lazy來執行滑鼠點文字方塊之外的地方，才將輸入的值改變到vue的data中   -->
+
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="price">Price:</label>  
+          <div class="col-md-4">
+          <input id="price" v-model="price" name="price" type="number" placeholder="" class="form-control input-md">
+          <!-- type="number" 會自動增加+1/-1的按鈕，而且會擋住輸入文字(但十六進位的英文字母和e可以輸入) -->
+          
+          </div>
+        </div>
+        
+        <!-- Textarea -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="description">Description</label>
+          <div class="col-md-4">                     
+            <textarea class="form-control" id="description" v-model="description" name="description"></textarea>
+          </div>
+        </div>
+        </fieldset>
+
+        <hr>
+        <h3 v-html="title">show title here :   {{title}}</h3>   <!-- 用v-html，可將輸入字串中的html執行出效果 -->
+        <!-- <h3>show price here :  {{ parseInt(price) + 1 }}</h3> -->   <!-- 用parseInt()才不會變成字串相加 -->
+        <h3>show price here :  {{ price - 0 + 1 }}</h3>         <!-- 或者用- 0的方式，先用減法，這樣javascript就會執行數字運算!! -->
+
+        <!-- <pre>show description here : {{description}}</pre> -->   <!-- pre標籤會保留輸入的換行符號執行出來 -->
+        <div v-html="desc">show description here : {{desc}}</div>
+
+      </form>
+        
+
+<script>
+var labApp = new Vue({
+  el: "#lab",
+  data: {
+    title: "ABC",
+    price: 500,
+    description: "............."
+  },
+  computed: {
+    desc: function() {   // 將輸入的換行符號，轉換成<br>標籤
+      return this.description.replace(/\r\n|\n/g, "<br>");   // 當遇到\r\n或者\n時，自動換成<br>
+      // /\r\n|\n/g 是regular expression的語法!!
+    }
+  }
+})
+
+
+</script>
+
+</body>
+</html>

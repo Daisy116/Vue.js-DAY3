@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <ul id="lab">
+        <tree-item v-bind:item="itemData"></tree-item>
+              <!-- v-bind:props="labApp.itemData" -->
+    </ul>
+        
+    <script type="text/x-template" id="item-template">
+        <li>
+            <div>{{item.text}}</div>
+            <!-- show出itemData的text -->
+            
+            <ul>                
+            </ul>
+        </li>
+    </script>
+
+    <script>
+        Vue.component('tree-item', {
+            template: '#item-template',
+            props: ['item']   // 定義元件的屬性
+        });
+
+        var labApp = new Vue({
+            el: '#lab',
+            data: {
+                itemData: { text: "root" }
+            }
+        })        
+    </script>
+
+</body>
+
+</html>

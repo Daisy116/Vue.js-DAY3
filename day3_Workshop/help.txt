@@ -1,0 +1,24 @@
+v-model.lazy=""
+https://cythilya.github.io/2017/04/14/vue-data-v-model/
+
+<span v-html="htmlData"> {{htmlData}}
+https://www.itread01.com/p/641086.html
+
+HTML <pre> 标签
+https://www.w3school.com.cn/tags/tag_pre.asp
+
+
+記寫法!!
+    <select id="city" v-model="city" name="city" class="form-control">
+        <option v-for="cityItem in cityList" v-bind:value="cityItem.id">{{cityItem.text}}</option>
+    </select>
+
+
+vue cli 是寫vue的開發環境
+https://dotblogs.com.tw/wasichris/2017/03/01/172049
+
+
+axios
+https://ykloveyxk.github.io/2017/02/25/axios%E5%85%A8%E6%94%BB%E7%95%A5/
+
+https://v1-cn.vuejs.org/guide/list.html
